@@ -21,6 +21,7 @@ from __future__ import print_function
 import math
 import os
 
+import pandas as pd
 
 import tensorflow as tf
 
@@ -109,8 +110,13 @@ def main(_):
     # beam search parameters. See caption_generator.py for a description of the
     # available beam search parameters.
     generator = caption_generator.CaptionGenerator(model, vocab)
+    
+    # Create a CSV via a pd dataframe to store results
+    df = pd.DataFrame(columns=["id", "cap1", "prob1", "cap2", "prob2", "cap3", "prob3"])
 
-    for filename in filenames:
+    for idx, filename in enumerate(filenames):
+      df.iloc[idx, "id"] = filename
+      
       with tf.gfile.GFile(filename, "rb") as f:
         image = f.read()
       captions = generator.beam_search(sess, image)
@@ -120,6 +126,8 @@ def main(_):
         sentence = [vocab.id_to_word(w) for w in caption.sentence[1:-1]]
         sentence = " ".join(sentence)
         print("  %d) %s (p=%f)" % (i, sentence, math.exp(caption.logprob)))
+        
+    print(df.head())
 
 
 if __name__ == "__main__":
