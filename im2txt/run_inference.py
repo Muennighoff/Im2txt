@@ -131,6 +131,8 @@ def main(_):
         df.loc[idx, "prob" + str(i)] = math.exp(caption.logprob)
         
     print(df.head())
+    
+    df.to_csv(path_or_buf="df.csv")
 
 
 if __name__ == "__main__":
