@@ -127,6 +127,9 @@ def main(_):
         sentence = " ".join(sentence)
         print("  %d) %s (p=%f)" % (i, sentence, math.exp(caption.logprob)))
         
+        df.loc[idx, "cap" + str(i)] = sentence
+        df.loc[idx, "cap" + str(i)] = caption.logprob
+        
     print(df.head())
 
 
