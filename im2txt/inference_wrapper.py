@@ -21,8 +21,11 @@ from __future__ import print_function
 
 
 
-from im2txt import show_and_tell_model
-from im2txt.inference_utils import inference_wrapper_base
+#from im2txt 
+import show_and_tell_model
+#from im2txt.inference_utils 
+from inference_utils import inference_wrapper_base
+import inference_utils.inference_wrapper_base
 
 
 class InferenceWrapper(inference_wrapper_base.InferenceWrapperBase):
