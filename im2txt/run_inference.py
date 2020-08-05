@@ -115,7 +115,7 @@ def main(_):
     df = pd.DataFrame(columns=["id", "cap1", "prob1", "cap2", "prob2", "cap3", "prob3"])
 
     for idx, filename in enumerate(filenames):
-      df.iloc[idx, "id"] = filename
+      df.loc[idx, "id"] = filename
       
       with tf.gfile.GFile(filename, "rb") as f:
         image = f.read()
