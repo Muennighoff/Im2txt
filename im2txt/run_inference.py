@@ -130,7 +130,7 @@ def main(_):
         df.loc[idx, "cap" + str(i)] = sentence
         df.loc[idx, "prob" + str(i)] = math.exp(caption.logprob)
         
-    print(df.head())
+    print(df.info())
     
     df.to_csv(path_or_buf="df.csv")
 
