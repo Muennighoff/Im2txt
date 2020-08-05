@@ -112,7 +112,7 @@ def main(_):
     generator = caption_generator.CaptionGenerator(model, vocab)
     
     # Create a CSV via a pd dataframe to store results
-    df = pd.DataFrame(columns=["id", "cap1", "prob1", "cap2", "prob2", "cap3", "prob3"])
+    df = pd.DataFrame(columns=["id", "cap0", "prob0", "cap1", "prob1", "cap2", "prob2"])
 
     for idx, filename in enumerate(filenames):
       df.loc[idx, "id"] = filename
@@ -128,7 +128,7 @@ def main(_):
         print("  %d) %s (p=%f)" % (i, sentence, math.exp(caption.logprob)))
         
         df.loc[idx, "cap" + str(i)] = sentence
-        df.loc[idx, "cap" + str(i)] = caption.logprob
+        df.loc[idx, "prob" + str(i)] = math.exp(caption.logprob)
         
     print(df.head())
 
