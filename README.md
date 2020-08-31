@@ -1,4 +1,6 @@
 # Note:
+I have adapted this repo from: https://github.com/HughKu/Im2txt to resolve some syntax errors and writing result captions automatically to a pandas dataframe.
+
 This repo aims to provide a **Ready-to-Go** setup with TensorFlow environment for **Image Captioning Inference** using pre-trained model. For training from scratch or funetuning, please refer to [Tensorflow Model Repo](https://github.com/tensorflow/models/tree/master/research/im2txt).
 
 
